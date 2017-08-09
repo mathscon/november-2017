@@ -1,0 +1,28 @@
+#!/bin/sh
+
+rm -rf out
+
+mkdir out
+mkdir out/js
+mkdir out/css
+mkdir out/images
+mkdir out/fonts
+mkdir out/vendor
+
+pug index.pug
+pug organizers.pug
+
+mv index.html out/
+mv organizers.html out/
+
+gulp
+
+cp agenda.pdf out/agenda.pdf
+
+cp -R css/*.min.css out/css/
+cp -R js/*.min.js out/js/
+cp -R images/* out/images/
+cp -R fonts/* out/fonts/
+cp -R vendor/* out/vendor/
+
+#zip -r website.zip out/
