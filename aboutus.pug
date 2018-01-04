@@ -1,16 +1,11 @@
 doctype html
-html(lang='en', xmlns="http://www.w3.org/1999/xhtml", xmlns:fb="http://ogp.me/ns/fb#")
+html(lang='en')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(name='description', content='Maths Conference at Imperial College London')
     meta(name='author', content='The Mathscon Team')
-
-    meta(property='og:title', content='mathscon.')
-    meta(property='og:url', content='http://mathscon.com/')
-    meta(property='og:image', content='http://mathscon.com/images/preview.png')
-    meta(property='og:description', content="Maths Conference at Imperial College London")
 
     meta(name="theme-color" content="#171414")
     // Windows Phone
@@ -22,13 +17,10 @@ html(lang='en', xmlns="http://www.w3.org/1999/xhtml", xmlns:fb="http://ogp.me/ns
     title mathscon.
     // Bootstrap Core CSS
     link(rel='icon', type='image/png', href='images/favicon.png')
-
     link(href='vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     link(href='css/slideshow.min.css', rel='stylesheet')
     // Custom Fonts
     link(href='vendor/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
-    // Plugin CSS
-    link(href='vendor/magnific-popup/magnific-popup.css', rel='stylesheet')
     // Theme CSS
     link(href='css/creative.min.css', rel='stylesheet')
     // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -38,31 +30,11 @@ html(lang='en', xmlns="http://www.w3.org/1999/xhtml", xmlns:fb="http://ogp.me/ns
       script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
 
   body#page-top
-    .se-pre-con
+    include sections/nav_org
 
-    include sections/nav
-
-    include sections/header
-
-    //include sections/about_us
-
-    include sections/event
-
-    include sections/speaker
-
-    include sections/grant_application
-
-    include sections/partners
-
-    include sections/tickets
-
-    include sections/signup
-
-    include sections/contact
+    include sections/about_us
 
     include sections/footer
-
-    include sections/portfolio
 
     // jQuery
     script(src='vendor/jquery/jquery.min.js')
@@ -72,14 +44,8 @@ html(lang='en', xmlns="http://www.w3.org/1999/xhtml", xmlns:fb="http://ogp.me/ns
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
     script(src='vendor/scrollreveal/scrollreveal.min.js')
     script(src='vendor/magnific-popup/jquery.magnific-popup.min.js')
-    script(src='https://maps.google.com/maps/api/js?key=AIzaSyAJcu4LfSHQ6Qv1T8MHWSklFl0g1Y4B49Y&sensor=false')
-    script(src='js/maps.min.js')
     // Theme JavaScript
     script(src='js/creative.min.js')
-    script.
-      $(window).load(function() {
-        $(".se-pre-con").fadeOut("slow");;
-      });
 
     script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -88,7 +54,3 @@ html(lang='en', xmlns="http://www.w3.org/1999/xhtml", xmlns:fb="http://ogp.me/ns
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-84869468-1', 'auto');
       ga('send', 'pageview');
-
-
-
-

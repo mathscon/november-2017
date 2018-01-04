@@ -11,9 +11,11 @@ mkdir out/vendor
 
 pug index.pug
 pug organizers.pug
+pug aboutus.pug
 
 mv index.html out/
 mv organizers.html out/
+mv aboutus.html out/
 
 gulp
 

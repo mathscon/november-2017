@@ -1,0 +1,179 @@
+diff --git a/aboutus.pug b/aboutus.pug
+new file mode 100644
+index 0000000..2e87465
+--- /dev/null
++++ b/aboutus.pug
+@@ -0,0 +1,56 @@
++doctype html
++html(lang='en')
++  head
++    meta(charset='utf-8')
++    meta(http-equiv='X-UA-Compatible', content='IE=edge')
++    meta(name='viewport', content='width=device-width, initial-scale=1')
++    meta(name='description', content='Maths Conference at Imperial College London')
++    meta(name='author', content='The Mathscon Team')
++
++    meta(name="theme-color" content="#171414")
++    // Windows Phone
++    meta(name="msapplication-navbutton-color" content="#171414")
++    // iOS Safari
++    meta(name="apple-mobile-web-app-capable" content="yes")
++    meta(name="apple-mobile-web-app-status-bar-style" content="black")
++
++    title mathscon.
++    // Bootstrap Core CSS
++    link(rel='icon', type='image/png', href='images/favicon.png')
++    link(href='vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
++    link(href='css/slideshow.min.css', rel='stylesheet')
++    // Custom Fonts
++    link(href='vendor/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
++    // Theme CSS
++    link(href='css/creative.min.css', rel='stylesheet')
++    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
++    // WARNING: Respond.js doesn't work if you view the page via file://
++    //if lt IE 9
++      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
++      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
++
++  body#page-top
++    include sections/nav_org
++
++    include sections/about_us
++
++    include sections/footer
++
++    // jQuery
++    script(src='vendor/jquery/jquery.min.js')
++    // Bootstrap Core JavaScript
++    script(src='vendor/bootstrap/js/bootstrap.min.js')
++    // Plugin JavaScript
++    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
++    script(src='vendor/scrollreveal/scrollreveal.min.js')
++    script(src='vendor/magnific-popup/jquery.magnific-popup.min.js')
++    // Theme JavaScript
++    script(src='js/creative.min.js')
++
++    script.
++      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
++      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
++      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
++      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
++      ga('create', 'UA-84869468-1', 'auto');
++      ga('send', 'pageview');
+diff --git a/build b/build
+index a892af4..0b18a0a 100755
+--- a/build
++++ b/build
+@@ -11,9 +11,11 @@ mkdir out/vendor
+ 
+ pug index.pug
+ pug organizers.pug
++pug aboutus.pug
+ 
+ mv index.html out/
+ mv organizers.html out/
++mv aboutus.html out/
+ 
+ gulp
+ 
+diff --git a/index.pug b/index.pug
+index 21d2ab0..b54f4d7 100644
+--- a/index.pug
++++ b/index.pug
+@@ -62,6 +62,8 @@ html(lang='en', xmlns="http://www.w3.org/1999/xhtml", xmlns:fb="http://ogp.me/ns
+ 
+     include sections/footer
+ 
++    include sections/portfolio
++
+     // jQuery
+     script(src='vendor/jquery/jquery.min.js')
+     // Bootstrap Core JavaScript
+diff --git a/sections/nav.pug b/sections/nav.pug
+index 9d35c28..5dc6cd2 100644
+--- a/sections/nav.pug
++++ b/sections/nav.pug
+@@ -13,7 +13,7 @@ nav#mainNav.navbar.navbar-default.navbar-default-i.navbar-fixed-top
+     #bs-example-navbar-collapse-1.collapse.navbar-collapse
+       ul.nav.navbar-nav.navbar-right
+         li
+-          a.page-scroll(href='#about-us') About Us
++          a.page-scroll(href='aboutus.html') About Us
+         li
+           a.page-scroll(href='#event') Event
+         li
+diff --git a/sections/nav_org.pug b/sections/nav_org.pug
+index aa8ddc9..be6a4d9 100644
+--- a/sections/nav_org.pug
++++ b/sections/nav_org.pug
+@@ -5,7 +5,7 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top
+       button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+         span.sr-only Toggle navigation
+         i.fa.fa-bars
+-      a.navbar-brand.page-scroll(href='index.html')
++      a.navbar-brand.page-scroll(href='#page-top')
+         | maths
+         span.text-primary con
+         | .
+@@ -13,22 +13,25 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top
+     #bs-example-navbar-collapse-1.collapse.navbar-collapse
+       ul.nav.navbar-nav.navbar-right
+         li
+-          a.page-scroll(href='index.html#about') About
++          a.page-scroll(href='#about-us') About Us
+         li
+-          a.page-scroll(href='index.html#logistics') Venue
++          a.page-scroll(href='index.html#event') Event
+         li
+           a.page-scroll(href='index.html#speaker') Speakers
+         li
+-          a.page-scroll(href='index.html#partners') Partners
++          a.page-scroll(href='index.html#grant-application') Grant Application
+         li
+-          a.page-scroll(href='index.html#signupsponsor') Sign up
++          a.page-scroll(href='index.html#partners') Sponsors & Partners
+         li
+           a.page-scroll(href='index.html#tickets') Tickets
+         li
+-          a.page-scroll(href='#organizers') Organizers
++          a.page-scroll(href='index.html#signupsponsor') Sign Up
+         li
+           a.page-scroll(href='index.html#contact') Contact
++        li.dropdown
++          a.dropdown-toggle(href='#', data-toggle='dropdown') Previous Editions
++          ul.dropdown-menu
++            li
++              a(href='http://www.mathscon.com/february-2017') february 2017
+     // /.navbar-collapse
+   // /.container-fluid
+-
+-
+diff --git a/sections/speakers/keynote.pug b/sections/speakers/keynote.pug
+index 79e9947..792d3fe 100644
+--- a/sections/speakers/keynote.pug
++++ b/sections/speakers/keynote.pug
+@@ -23,24 +23,3 @@ br
+       img.img-responsive(src='images/speaker/mc2018/Simon_Singh.png', alt='')
+     .speaker-caption
+       h4 Simon Singh
+-  //.col-lg-3.col-xs-6.speaker-item
+-  //  a.speaker-link(href='#conrad-wolfram', data-toggle='modal')
+-  //    .speaker-hover
+-  //      .speaker-hover-content
+-  //    img.img-responsive(src='images/speaker/conrad_wolfram.png', alt='')
+-  //  .speaker-caption
+-  //    h4 Conrad Wolfram
+-  //.col-lg-3.col-xs-6.speaker-item
+-  //  a.speaker-link(href='#rob-eastaway', data-toggle='modal')
+-  //    .speaker-hover
+-  //      .speaker-hover-content
+-  //    img.img-responsive(src='images/speaker/rob_eastaway.png', alt='')
+-  //  .speaker-caption
+-  //    h4 Rob Eastaway
+-  //.col-lg-3.col-xs-6.speaker-item
+-  //  a.speaker-link(href='#martin-hairer', data-toggle='modal')
+-  //    .speaker-hover
+-  //      .speaker-hover-content
+-  //    img.img-responsive(src='images/speaker/martin_hairer.png', alt='')
+-  //  .speaker-caption
+-  //    h4 Martin Hairer FRS
