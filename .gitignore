@@ -105,4 +105,6 @@ Session.vim
 # auto-generated tag files
 tags
 
+.idea/
+
 # End of https://www.gitignore.io/api/vim,node,macos
